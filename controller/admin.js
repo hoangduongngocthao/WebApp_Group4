@@ -4,7 +4,7 @@ const router = express.Router()
 
 //neu request la: /admin
 router.get('/',(req,res)=>{
-    res.render('adminIndex')
+    res.render('adminHome')
 })
 
 //neu request la: /admin/addUser
@@ -23,7 +23,7 @@ router.post('/addUser',(req,res)=>{
         password: pass
     }
     insertObject("Users",objectToInsert)
-    res.render('adminIndex')
+    res.render('adminHome')
 })
 
 module.exports = router;
