@@ -1,7 +1,7 @@
 const Account = require('../models/user');
 const customer = require('../models/customer');
 const bookDetail = require('../models/bookDetail')
-const bcrypt = require('bcryptjs');
+// const bcrypt = require('bcryptjs');
 
 exports.handleLogin = async (req, res) => {
     const username = req.body.username;

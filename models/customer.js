@@ -1,31 +1,28 @@
 const mongoose = require('../db/dbHandler')
 
 const customerSchema = new mongoose.Schema({
-    name: {
-        type: 'string',
+    name: { 
+        type: String,
         required: true
     },
-
-    email: {
-        type: 'string',
+    email:{
+        type: String,
         required: true,
         unique: true
     },
-
-    img: {
-        type: String,
-        default: "user.png"
+    dateOfBirth:{
+        type: Date,
+        required: true
     },
-
-    password: {
-        type: String,
-        required: true,
-    },
-    
-    Role:{
+    education:{
         type: String,
         required: true
     },
+    img: {
+        type: String,
+        default: "user.png"
+    }
+ 
 })
 
-module.exports = mongoose.model('Customer', customerSchema)
+module.exports = mongoose.model('Customers', customerSchema)
