@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\controller",
+    "\\db",
+    "\\middlerware",
+    "\\views"
+  ],
+  "SelectedNode": "\\views\\shoppingcart.hbs",
+  "PreviewInSolutionExplorer": false
+}
