@@ -1,6 +1,6 @@
 const mongoose = require('../db/dbHandler')
 
-const shoppingcartSchema = new mongoose.Schema({
+const orderDetailSchema = new mongoose.Schema({
     name: {
         type: 'string',
         required: true
@@ -20,6 +20,11 @@ const shoppingcartSchema = new mongoose.Schema({
         type: String,
         default: "user.png"
     },
+
+    customer: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'customer'
+    }
 })
 
-module.exports = mongoose.model('Shoppingcart', shoppingcartSchema)
+module.exports = mongoose.model('OrderDetail', orderDetailSchema)
