@@ -1,6 +1,6 @@
 const mongoose = require('../db/dbHandler')
 
-const shoppingcart = new mongoose.Schema({
+const shoppingcartSchema = new mongoose.Schema({
     name: {
         type: 'string',
         required: true
@@ -22,4 +22,4 @@ const shoppingcart = new mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model('Shoppingcart', shoppingcart)
+module.exports = mongoose.model('Shoppingcart', shoppingcartSchema)
