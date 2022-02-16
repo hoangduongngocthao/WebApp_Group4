@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hoangduongngocthao/WebApp_Group4/issues"
+    "url": "https://github.com/sonhan14/Application-Development-Group2/issues"
   },
   "homepage": "https://github.com/hoangduongngocthao/WebApp_Group4#readme",
   "dependencies": {
@@ -21,6 +21,7 @@
     "hbs": "^4.2.0",
     "mongodb": "^4.3.0",
     "mongoose": "^6.1.6",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "path": "^0.12.7"
   }
 }

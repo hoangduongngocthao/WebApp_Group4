@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const multer = require('multer')
+const mongoose = require('mongoose');
 const shoppingcart = require('../controller/shoppingcart')
 
 // const storage = multer.diskStorage({
@@ -21,4 +22,5 @@ const shoppingcart = require('../controller/shoppingcart')
 //     },
 // })
 
-
+router.get("/shoppingcart", shoppingcart.viewShoppingCart)
+router.post("/", shoppingcart.doShoppingCart)

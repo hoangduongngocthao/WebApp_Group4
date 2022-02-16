@@ -1,6 +1,6 @@
 const mongoose = require('../db/dbHandler')
 
-const orderDetailSchema = new mongoose.Schema({
+const shoppingcartSchema = new mongoose.Schema({
     name: {
         type: 'string',
         required: true
@@ -27,4 +27,4 @@ const orderDetailSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('OrderDetail', orderDetailSchema)
+module.exports = mongoose.model('shoppingcart', shoppingcartSchema)
