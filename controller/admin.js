@@ -1,30 +1,18 @@
-// const express = require('express')
-// const { insertObject } = require('../db/dbHandler')
-// const router = express.Router()
+const Account = require('../models/user');
+const customer = require('../models/customer');
+// const validation = require('./validation');
+const bookDetail = require('../models/bookDetail');
 
-// //neu request la: /admin
-// router.get('/',(req,res)=>{
-//     res.render('adminHome')
-// })
+exports.getAdmin = async (req, res) => {
+    res.render('admin', { loginName: req.session.email })
+}
 
-// //neu request la: /admin/addUser
-// router.get('/addUser',(req,res)=>{
-//     res.render('addUser')
-// })
+// exports.feedbackManage = async (req, res) => {
+//     res.render ('adminPage', {feedback: result,  loginName: req.session.email })
+//     const result = await dbHandler.getAll("Feedback");
+// }
 
-// //Submit add User
-// router.post('/addUser',(req,res)=>{
-//     const name = req.body.txtName
-//     const role = req.body.Role
-//     const pass= req.body.txtPassword
-//     const objectToInsert = {
-//         userName: name,
-//         role:role,
-//         password: pass
-//     }
-//     insertObject("Users",objectToInsert)
-//     res.render('adminHome')
-// })
 
-// module.exports = router;
 
+
+module.exports = router;
