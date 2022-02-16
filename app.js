@@ -2,6 +2,9 @@ const express = require('express')
 const app = express()
 const mongoose = require('./db/dbHandler')
 const bodyParser = require('body-parser')
+const Account = require('./models/user');
+const customer = require('./models/customer');
+const bookDetail = require('./models/bookDetail');
 // session = require('express-session')
 var hbs = require('hbs');
 
@@ -30,9 +33,13 @@ app.get('/',(req,res)=>{
     res.render('index')
 })
 
-const authRoute = require("./routes/auth")
-var adminRoute = require('./routes/admin.js')
-var customerRoute = require('./routes/customer.js')
+app.get('/shoppingcart',(req,res)=>{
+    res.render('shoppingcart')
+})
+
+// const authRoute = require("./routes/auth")
+// var adminRoute = require('./routes/admin.js')
+// var customerRoute = require('./routes/customer.js')
 
 
 // app.use("/", authRoute)

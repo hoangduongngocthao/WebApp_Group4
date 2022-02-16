@@ -1,12 +1,11 @@
 // const shoppingcart = require('../models/shoppingcart'); 
+const Account = require('./models/user');
+const customer = require('./models/customer');
+const bookDetail = require('./models/bookDetail');
 const express = require('express')
 const router = express.Router()
 
-// router.get('/shoppingcart',(req,res) => {
-//     res.render('shoppingcart')
-// })
-
-router.post("/", async (req, res) => {
+exports.doShoppingCart = async (req, res) => {
     const bookID = req.body.bookID
     const book = await dbHandler.getDocumentById(bookID, "Book")
     const orderDB = await dbHandler.getCart(req.session.user.name)
@@ -39,7 +38,7 @@ router.post("/", async (req, res) => {
         }
         await dbHandler.updateCart(req.session.user.name, req.session["cart"])
         res.redirect('/details?id=' + bookID)
-    }
+    }   
 
     else {
         let cart = req.session["cart"]
@@ -81,9 +80,9 @@ router.post("/", async (req, res) => {
         await dbHandler.updateCart(req.session.user.name, req.session["cart"])
         res.redirect('/details?id=' + bookID)
     }
-})
+}
 
-router.get('/shoppingcart', async (req, res) => {
+exports.viewShoppingCart = async (req, res) => {
     const cart = req.session["cart"]
     if (cart) {
         res.render('ShoppingCart', { order: cart, user: req.session.user })
@@ -93,6 +92,4 @@ router.get('/shoppingcart', async (req, res) => {
         console.log(orderDB);
         res.render('ShoppingCart', { order: orderDB, user: req.session.user })
     }
-
-})
-module.exports = router;
+}
