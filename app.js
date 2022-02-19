@@ -5,6 +5,9 @@ const bodyParser = require('body-parser')
 const Account = require('./models/user');
 const customer = require('./models/customer');
 const bookDetail = require('./models/bookDetail');
+const book = require('./models/book');
+const bookCategory = require('./models/bookCategory');
+const shoppingcart = require('./models/shoppingcart');
 // session = require('express-session')
 var hbs = require('hbs');
 
@@ -33,20 +36,16 @@ app.get('/',(req,res)=>{
     res.render('index')
 })
 
-app.get('/home',(req,res)=>{
-    res.render('home')
-})
-
 app.get('/shoppingcart',(req,res)=>{
     res.render('shoppingcart')
 })
 
-// const authRoute = require("./routes/auth")
-// var adminRoute = require('./routes/admin.js')
-// var customerRoute = require('./routes/customer.js')
+const authRoute = require("./routes/auth")
+app.use(authRoute)
+
+var customerRoute = require('./routes/customer.js')
 
 
-// app.use("/", authRoute)
 // app.use("/", adminRoute)
 // app.use("/", customerRoute)
 

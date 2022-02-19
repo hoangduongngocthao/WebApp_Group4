@@ -22,5 +22,6 @@ const shoppingcart = require('../controller/shoppingcart')
 //     },
 // })
 
-router.get("/shoppingcart", shoppingcart.viewShoppingCart)
-router.post("/", shoppingcart.doShoppingCart)
+router.get("/shoppingcart", shoppingcart.getCart)
+
+// router.post("/", shoppingcart.doShoppingCart)

@@ -6,7 +6,7 @@ const bookSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    category:{
+    price:{
         type: String,
         required: true
     },
