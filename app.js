@@ -4,11 +4,10 @@ const mongoose = require('./db/dbHandler')
 const bodyParser = require('body-parser')
 const Account = require('./models/user');
 const customer = require('./models/customer');
-const bookDetail = require('./models/bookDetail');
 const book = require('./models/book');
 const bookCategory = require('./models/bookCategory');
 const shoppingcart = require('./models/shoppingcart');
-// session = require('express-session')
+session = require('express-session')
 var hbs = require('hbs');
 
 app.set('view engine', 'hbs')
@@ -19,12 +18,12 @@ hbs.registerPartials(__dirname + '/views/partials/')
 // hbs.registerHelper('dateFormat', require('handlebars-dateformat'))
 app.use(express.static(__dirname + '/public'))
 
-// app.use(session({
-//     secret: '2C44-4D44-WppQ38S',
-//     resave: true,
-//     saveUninitialized: true,
-//     cookie: { maxAge: 3600000 }
-// }));
+app.use(session({
+    secret: '2C44-4D44-WppQ38S',
+    resave: true,
+    saveUninitialized: true,
+    cookie: { maxAge: 3600000 }
+}));
 
 // const adminController = require('./controller/admin')
 // const shoppingcart = require('./controller/shoppingcart')
@@ -36,12 +35,15 @@ app.get('/',(req,res)=>{
     res.render('index')
 })
 
-app.get('/shoppingcart',(req,res)=>{
-    res.render('shoppingcart')
-})
+// app.get('/shoppingcart',(req,res)=>{
+//     res.render('shoppingcart')
+// })
 
 const authRoute = require("./routes/auth")
 app.use(authRoute)
+
+var bookDetail = require("./routes/customer.js")
+app.use('/', bookDetail)
 
 var customerRoute = require('./routes/customer.js')
 

@@ -2,8 +2,9 @@ const express = require('express')
 const router = express.Router()
 // const multer = require('multer')
 const mongoose = require('mongoose');
-// const shoppingcart = require('../controller/shoppingcart')
 const shoppingcart = require('../controller/shoppingcart')
+const bookDetail = require('../controller/bookController')
+
 
 // const storage = multer.diskStorage({
 //     destination:function(req, file, callback){
@@ -25,4 +26,8 @@ const shoppingcart = require('../controller/shoppingcart')
 
 router.get("/shoppingcart", shoppingcart.getCart)
 
+router.get("/bookDetail", bookDetail.getBookDetail)
+
+
 // router.post("/", shoppingcart.doShoppingCart)
+module.exports = router;

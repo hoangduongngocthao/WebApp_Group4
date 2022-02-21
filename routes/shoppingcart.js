@@ -25,3 +25,5 @@ const shoppingcart = require('../controller/shoppingcart')
 router.get("/shoppingcart", shoppingcart.getCart)
 
 // router.post("/", shoppingcart.doShoppingCart)
+
+module.exports = router;

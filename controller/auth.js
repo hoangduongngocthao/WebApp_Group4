@@ -13,13 +13,13 @@ exports.handleLogin = async (req, res) => {
                     req.session.user = user;
                     req.session.email = username;
                     req.session.customer = true;
-                    res.redirect('/customer');
+                    res.redirect('/index');
                 }
                 else if (user.Role == 'admin') {
                     req.session.user = user;
                     req.session.email = username;
                     req.session.admin = true;
-                    res.redirect('/admin');
+                    res.redirect('/index');
                 }
             } else {
                 return res.render('login', { errors: 'Username or password is incorrect' })

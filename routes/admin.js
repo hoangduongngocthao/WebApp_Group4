@@ -27,4 +27,4 @@
 // router.get("/admin/feedbackManage", isAdmin, adminController.feedbackManage)
 
 
-// module.exports = router;
+module.exports = router;
