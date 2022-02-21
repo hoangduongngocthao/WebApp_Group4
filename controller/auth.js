@@ -12,7 +12,7 @@ exports.handleLogin = async (req, res) => {
                 if (user.Role == 'customer') {
                     req.session.user = user;
                     req.session.email = username;
-                    req.session.staff = true;
+                    req.session.customer = true;
                     res.redirect('/customer');
                 }
                 else if (user.Role == 'admin') {
