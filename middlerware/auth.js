@@ -5,9 +5,11 @@ exports.isAdmin = function(req, res, next) {
       return res.sendStatus(401);
 };
 
-exports.isUser = function(req, res, next) {
+exports.isCustomer = function(req, res, next) {
     if (req.session && req.session.user)
       return next();
     else
       return res.sendStatus(401);
 };
+
+

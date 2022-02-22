@@ -1,10 +1,9 @@
 const Account = require('../models/user');
 const customer = require('../models/customer');
 // const validation = require('./validation');
-const bookDetail = require('../models/bookDetail');
 
 exports.getAdmin = async (req, res) => {
-    res.render('admin', { loginName: req.session.email })
+    res.render('index', { loginName: req.session.email })
 }
 
 // exports.feedbackManage = async (req, res) => {
@@ -14,5 +13,3 @@ exports.getAdmin = async (req, res) => {
 
 
 
-
-module.exports = router;

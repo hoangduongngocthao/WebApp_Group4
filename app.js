@@ -6,8 +6,9 @@ const Account = require('./models/user');
 const customer = require('./models/customer');
 const book = require('./models/book');
 const bookCategory = require('./models/bookCategory');
-const shoppingcart = require('./models/shoppingcart');
+const shoppingcart = require('./models/orderDetail');
 session = require('express-session')
+const path = require("path");
 var hbs = require('hbs');
 
 app.set('view engine', 'hbs')
@@ -17,6 +18,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 hbs.registerPartials(__dirname + '/views/partials/')
 // hbs.registerHelper('dateFormat', require('handlebars-dateformat'))
 app.use(express.static(__dirname + '/public'))
+
+app.use('/uploads', express.static(path.join(__dirname ,'/uploads')));
 
 app.use(session({
     secret: '2C44-4D44-WppQ38S',
@@ -46,6 +49,10 @@ var bookDetail = require("./routes/customer.js")
 app.use('/', bookDetail)
 
 var customerRoute = require('./routes/customer.js')
+app.use('/', customerRoute)
+
+var adminRoute = require('./routes/admin.js')
+app.use('/', adminRoute)
 
 
 // app.use("/", adminRoute)

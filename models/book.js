@@ -4,15 +4,22 @@ const bookSchema = new mongoose.Schema({
     name: { 
         type: String,
         required: true,
-        unique: true
     },
     price:{
         type: String,
         required: true
     },
+    quantity:{
+        type: Number,
+        required: true
+    },
     description:{
         type: String,
-        required: true
+        required: false
+    },
+    img:{
+        type: String,
+        default: "bookdefault.jpg"
     },
 });
 
