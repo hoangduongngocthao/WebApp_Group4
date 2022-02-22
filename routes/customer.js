@@ -30,6 +30,9 @@ router.get("/customer/bookDetail", isCustomer, customerController.getBookDetail)
 
 router.get("/customer/orderDetail", isCustomer, customerController.getOrderDetail)
 
+router.post("/customer/doAddToCart", isCustomer, customerController.postAddtocart)
+
+
 
 
 module.exports = router;

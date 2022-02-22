@@ -22,7 +22,6 @@ exports.getCustomer = async(req, res) => {
 
 exports.getBookDetail = async(req, res) => {
     let id = req.query.id
-    console.log(id)
     let bookDetail = await book.findById(id)
     res.render('customer/bookDetail', { bookDetail: bookDetail })
 }
@@ -35,5 +34,13 @@ exports.getOrderDetail = async(req, res) => {
 }
 
 exports.postAddtocart = async (req, res) => {
-    
+    let quantities = req.body.quantity
+    let id = req.query.id
+    let bookDetail = await book.findById(id)
+    bookDetail.quantity -= quantities
+    var OderDetail = await orderDetail.find({_id: {$in: currentCustomer._id}}).populate('orderDetail');
+    await orderDetail.findByIdAndUpdate(OderDetail._id,
+        {$push :{book:id}},
+        { new: true, useFindAndModify: false })
+    res.redirect('/customer/orderDetail')
 }
