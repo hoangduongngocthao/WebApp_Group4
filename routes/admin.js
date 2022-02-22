@@ -1,9 +1,9 @@
-// const express = require('express');
-// const router = express.Router();
-// // // const multer = require('multer');
-// const mongoose = require('mongoose');
-// const adminController = require('../controller/admin');
-// const { isAdmin } = require("../middleware/auth");
+const express = require('express');
+const router = express.Router();
+// const multer = require('multer');
+const mongoose = require('mongoose');
+const adminController = require('../controller/admin');
+const { isAdmin } = require("../middlerware/auth");
 
 
 // // // const storageStaff = multer.diskStorage({
@@ -26,5 +26,6 @@
 
 // router.get("/admin/feedbackManage", isAdmin, adminController.feedbackManage)
 
+router.get("/admin", isAdmin, adminController.getAdmin)
 
 module.exports = router;

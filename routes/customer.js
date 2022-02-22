@@ -2,8 +2,8 @@ const express = require('express')
 const router = express.Router()
 // const multer = require('multer')
 const mongoose = require('mongoose');
-const shoppingcart = require('../controller/shoppingcart')
-const bookDetail = require('../controller/bookController')
+const customerController = require('../controller/customer')
+const { isCustomer } = require("../middlerware/auth");
 
 
 // const storage = multer.diskStorage({
@@ -24,10 +24,9 @@ const bookDetail = require('../controller/bookController')
 //     },
 // })
 
-router.get("/shoppingcart", shoppingcart.getCart)
+router.get("/customer", isCustomer, customerController.getCustomer)
 
-router.get("/bookDetail", bookDetail.getBookDetail)
+router.get("/customer/bookDetail", isCustomer, customerController.getBookDetail)
 
 
-// router.post("/", shoppingcart.doShoppingCart)
 module.exports = router;
