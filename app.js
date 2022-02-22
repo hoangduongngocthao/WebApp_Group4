@@ -45,9 +45,6 @@ app.get('/',(req,res)=>{
 const authRoute = require("./routes/auth")
 app.use(authRoute)
 
-var bookDetail = require("./routes/customer.js")
-app.use('/', bookDetail)
-
 var customerRoute = require('./routes/customer.js')
 app.use('/', customerRoute)
 

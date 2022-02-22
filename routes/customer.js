@@ -28,5 +28,8 @@ router.get("/customer", isCustomer, customerController.getCustomer)
 
 router.get("/customer/bookDetail", isCustomer, customerController.getBookDetail)
 
+router.get("/customer/orderDetail", isCustomer, customerController.getOrderDetail)
+
+
 
 module.exports = router;

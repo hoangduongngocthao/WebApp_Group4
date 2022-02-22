@@ -21,6 +21,10 @@ const customerSchema = new mongoose.Schema({
     img: {
         type: String,
         default: "user.png"
+    },
+    orderDetail: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'orderDetail'
     }
  
 })
