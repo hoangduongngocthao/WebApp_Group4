@@ -43,8 +43,7 @@
 						</li>
 						<li>
 							<div class="cart dropdown">
-						  		<a data-toggle="dropdown" href="/shoppingcart"><i class="fa fa-shopping-cart"></i>Cart</a>		  
-										    
+						  		<a data-toggle="dropdown" href="/login"><i class="fa fa-shopping-cart"></i>Cart</a>
 							</div>
 						</li>
 					</ul>
@@ -142,59 +141,22 @@
             <div class="block-heading">
               <h2>Product Best Seller</h2>
             </div>
+
+            {{#each listBook}}
             <div class="row">
               <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
-                  <a class="catagotie-head" href="/bookDetail">
-                    <img src="images/shine8.jpg" alt="...">
-                    <h3>Shine Tập 1</h3>
+                  <a class="catagotie-head" href="/login">
+                    <img src="../{{img}}" alt="...">
+                    <h3>{{name}}</h3>
                   </a>
                   <div class="caption">
-                    <p>Crayon Shin-chan (tên tiếng Việt: Shin-cậu bé bút chì) của tác giả Yoshito Usui là một trong những bộ manga nổi tiếng của Nhật Bản. 
-                      Sau khi tập 50 được xuất bản tại Nhật...</p>
-                    <p>
-                      <a href="/bookDetail" class="btn btn-default btn-transparent" role="button">
-                        <span>Check Items</span>
-                      </a>
-                    </p>
+                    <p>{{description}}</p>     
                   </div> <!-- End of /.caption -->
                 </div> <!-- End of /.thumbnail -->
               </div> <!-- End of /.col-sm-6 col-md-4 -->
-              <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                  <a class="catagotie-head" href="/bookDetail">
-                    <img src="images/shine4.jpg" alt="...">
-                    <h3>Shine Tập 2</h3>
-                  </a>
-                  <div class="caption">
-                    <p>Về hình thức thể hiện, tác giả sử dụng bút pháp đơn giản, thậm chí có vẻ ngây ngô hơn so với các bộ manga khác. 
-                      Nội dung truyện cũng đơn giản...</p>
-                    <p>
-                      <a href="/bookDetail" class="btn btn-default btn-transparent" role="button">
-                        <span>Check Items</span>
-                      </a>
-                    </p>
-                  </div> <!-- End of /.caption -->
-                </div> <!-- End of /.thumbnail -->
-              </div> <!-- End of /.col-sm-6 col-md-4 -->
-              <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                  <a class="catagotie-head" href="/bookDetail">
-                    <img src="images/shine9.jpg" alt="...">
-                    <h3>Shine Tập 3</h3>
-                  </a>
-                  <div class="caption">
-                    <p>Mỗi tập truyện khoảng 120 trang, nhưng cứ thử cầm lên xem, 
-                      bạn sẽ không thể rời mắt khỏi cuốn sách cho đến tận trang cuối cùng. 
-                      Với tài năng kể chuyện hấp dẫn....</p>
-                    <p>
-                      <a href="/bookDetail" class="btn btn-default btn-transparent" role="button">
-                        <span>Check Items</span>
-                      </a>
-                    </p>
-                  </div> <!-- End of /.caption -->
-                </div> <!-- End of /.thumbnail -->
-              </div> <!-- End of /.col-sm-6 col-md-4 -->
+              {{/each}}
+
             </div> <!-- End of /.row -->
           </div> <!-- End of /.block -->
         </div> <!-- End of /.col-md-12 -->
@@ -217,21 +179,25 @@
           </div>
         </div>
       </div>
+
+      {{#each listBook}}
       <div class="row">
         <div class="col-md-3">
           <div class="products">
-            <a href="/bookDetail">
-              <img src="images/shine8.jpg" alt="">
+            <a href="/login">
+              <img src="../{{img}}" alt="">
             </a>
-            <a href="/bookDetail">
-              <h4> Shine cậu bé bút chì - tập 1 </h4>
+            <a href="/login">
+              <h4> {{name}} </h4>
             </a>
-            <p class="price">20.000VNĐ</p>
-            <a class="view-link shutter" href="/shoppingcart">
+            <p class="price">{{price}}VNĐ</p>
+            <a class="view-link shutter" href="/login">
               <i class="fa fa-plus-circle"></i>Add To Cart</a>
           </div> <!-- End of /.products -->
         </div> <!-- End of /.col-md-3 -->
-        <div class="col-md-3">
+        {{/each}}
+
+        {{!-- <div class="col-md-3">
           <div class="products">
             <a href="/bookDetail">
               <img src="images/shine4.jpg" alt="">
@@ -268,8 +234,8 @@
             <p class="price">35.000VNĐ</p>
             <a class="view-link shutter" href="#">
               <i class="fa fa-plus-circle"></i>Add To Cart</a>
-          </div> <!-- End of /.products -->
-        </div> <!-- End Of /.Col-md-3 -->
+          </div> <!-- End of /.products --> --}}
+        {{!-- </div> <!-- End Of /.Col-md-3 --> --}}
       </div> <!-- End of /.row -->
     </div> <!-- End of /.container -->
   </section> <!-- End of Section -->

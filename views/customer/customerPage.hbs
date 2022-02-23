@@ -118,7 +118,7 @@
                   </div> <!-- End of /.caption -->
                 </div> <!-- End of /.thumbnail -->
               </div> <!-- End of /.col-sm-6 col-md-4 -->
-              {{/each}}
+            {{/each}}
 
             </div> <!-- End of /.row -->
           </div> <!-- End of /.block -->
@@ -142,21 +142,25 @@
           </div>
         </div>
       </div>
+
+      {{#each listBook}}
       <div class="row">
         <div class="col-md-3">
           <div class="products">
-            <a href="/bookDetail">
-              <img src="images/shine8.jpg" alt="">
+            <a href="/customer/bookDetail?id={{id}}">
+              <img src="../{{img}}" alt="">
             </a>
             <a href="/bookDetail">
-              <h4> Shine cậu bé bút chì - tập 1 </h4>
+              <h4> {{name}} </h4>
             </a>
-            <p class="price">20.000VNĐ</p>
+            <p class="price">{{price}}VNĐ</p>
             <a class="view-link shutter" href="/shoppingcart">
               <i class="fa fa-plus-circle"></i>Add To Cart</a>
           </div> <!-- End of /.products -->
         </div> <!-- End of /.col-md-3 -->
-        <div class="col-md-3">
+        {{/each}}
+
+        {{!-- <div class="col-md-3">
           <div class="products">
             <a href="/bookDetail">
               <img src="images/shine4.jpg" alt="">
@@ -196,7 +200,7 @@
           </div> <!-- End of /.products -->
         </div> <!-- End Of /.Col-md-3 -->
       </div> <!-- End of /.row -->
-    </div> <!-- End of /.container -->
+    </div> <!-- End of /.container --> --}}
   </section> <!-- End of Section -->
 
 

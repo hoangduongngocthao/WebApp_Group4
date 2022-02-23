@@ -10,23 +10,18 @@ const customerSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    dateOfBirth:{
-        type: Date,
-        required: true
-    },
     education:{
         type: String,
         required: true
     },
-    img: {
-        type: String,
-        default: "user.png"
-    },
-    orderDetail: {
+    // img: {
+    //     type: String,
+    //     default: "user.png"
+    // },
+    orderDetail: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'orderDetail'
-    }
- 
+        ref: "orderDetail"
+    }]
 })
 
 module.exports = mongoose.model('Customers', customerSchema)

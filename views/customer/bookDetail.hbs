@@ -9,7 +9,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 
-{{> customerHeader}}
+{{!-- {{> customerHeader}} --}}
 
 <body>
     <div class="container">
@@ -18,7 +18,7 @@
                 <aside class="col-sm-5 border-right">
                     <article class="gallery-wrap">
                         <div class="img-big-wrap">
-                            <div> <a href="#"><img src="../{{bookDetail.img}}" width="auto" , height="auto"></a></div>
+                            <div> <a href="#"><img src="../{{bookDetail.img}}" width="100%" height="100%"></a></div>
                         </div> <!-- slider-product.// -->
                         {{!-- <div class="img-small-wrap">
                             <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>
@@ -66,8 +66,8 @@
                                 </div> <!-- col.// -->
                             </div> <!-- row.// -->
                             <hr>
-                            <input type="hidden" name="id" value={{_id}}> </input>
-                            <a href="#" class="btn btn-lg btn-primary text-uppercase"> Continue Buying</a>
+                            <input type="hidden" name="id" value={{bookDetail._id}}> </input>
+                            <a href="/customer" class="btn btn-lg btn-primary text-uppercase"> Continue Shopping</a>
                             <input type="submit" value="Add to cart" class="btn btn-lg btn-outline-primary text-uppercase"> </input>
                         </form>
                     </div>

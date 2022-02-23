@@ -24,13 +24,13 @@ const { isCustomer } = require("../middlerware/auth");
 //     },
 // })
 
-router.get("/customer", isCustomer, customerController.getCustomer)
+router.get("/customer", customerController.getCustomer)
 
-router.get("/customer/bookDetail", isCustomer, customerController.getBookDetail)
+router.get("/customer/bookDetail", customerController.getBookDetail)
 
-router.get("/customer/orderDetail", isCustomer, customerController.getOrderDetail)
+router.get("/customer/orderDetail", customerController.getOrderDetail)
 
-router.post("/customer/doAddToCart", isCustomer, customerController.postAddtocart)
+router.post("/customer/doAddToCart", customerController.postAddtocart)
 
 
 
