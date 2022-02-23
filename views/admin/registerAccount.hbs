@@ -1,34 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 
-{{> adminHeader}}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet"
+        id="bootstrap-css">
+    <title>Register Account</title>
+</head>
+
 <body>
-    <div class="main">
-        <form action="/admin/doAddAccount" method="post" class="form">
-            <h3 class="heading">REGISTRATION</h3>
+    <form action="/admin/doAddAccount" method="post" class="form">
+        <fieldset>
+            <div id="legend">
+                <legend class="">Register</legend>
+            </div>
+            <div class="control-group">
+                <!-- Username -->
+                <label class="control-label" for="username">Username</label>
+                <div class="controls">
+                    <input type="text" id="username" name="username" placeholder="............." class="input-xlarge">                
+                </div>
+            </div>
 
-            <div class="spacer"></div>
+            <div class="control-group">
+                <!-- E-mail -->
+                <label class="control-label" for="email">E-mail</label>
+                <div class="controls">
+                    <input type="text" id="email" name="email" placeholder="............." class="input-xlarge">
+                </div>
+            </div>
 
-            <div class="form-group">
-                <label class="form-label"> Name</label>
-                <input name="txtName" type="text" placeholder="Ex: Thao Hoang" class="form-control">
+            <div class="control-group">
+                <!-- Password-->
+                <label class="control-label" for="password">Password</label>
+                <div class="controls">
+                    <input type="password" id="password" name="password" placeholder="..........." class="input-xlarge">
+                </div>
             </div>
-            
-            <div class="form-group">
-                <label class="form-label">Email</label>
-                <input name="txtEmail" type="email" placeholder="Ex: username@admin" class="form-control">
+
+            <div class="control-group">
+                <!-- Password -->
+                <label class="control-label" for="education">Education</label>
+                <div class="controls">
+                    <input type="text" name="Education" placeholder="............."
+                        class="input-xlarge">
+                </div>
             </div>
-            <div class="form-group">
-                <label class="form-label">Password</label>
-                <input name="txtPassword" type="password" placeholder="Enter password..." class="form-control">
+            <div class="control-group">
+                <!-- Button -->
+                <div class="controls">
+                    <input type="submit" class="form-submit" value="Register">
+                </div>
             </div>
-            <div class="form-group">
-                <label class="form-label">Education</label>
-                <input name="txtEducation" type="text" placeholder="Ex: IT, Business.." class="form-control">
-            </div>
-            <input type="submit" class="form-submit" value="Register">
-        </form>
-    </div>
+        </fieldset>
+    </form>
 </body>
 
 </html>
