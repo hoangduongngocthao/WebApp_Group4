@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> adminHeader}}
+<body>
+    <div class="main">
+        <form action="/admin/doAddAccount" method="post" class="form">
+            <h3 class="heading">REGISTRATION</h3>
+
+            <div class="spacer"></div>
+
+            <div class="form-group">
+                <label class="form-label"> Name</label>
+                <input name="txtName" type="text" placeholder="Ex: Thao Hoang" class="form-control">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input name="txtEmail" type="email" placeholder="Ex: username@admin" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <input name="txtPassword" type="password" placeholder="Enter password..." class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Education</label>
+                <input name="txtEducation" type="text" placeholder="Ex: IT, Business.." class="form-control">
+            </div>
+            <input type="submit" class="form-submit" value="Register">
+        </form>
+    </div>
+</body>
+
+</html>

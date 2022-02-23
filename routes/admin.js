@@ -26,6 +26,11 @@ const { isAdmin } = require("../middlerware/auth");
 
 // router.get("/admin/feedbackManage", isAdmin, adminController.feedbackManage)
 
-router.get("/admin", isAdmin, adminController.getAdmin)
+router.get("/admin", adminController.getAdmin)
+
+router.get("/admin/registerAccount", adminController.getRegisterAccount)
+
+router.post("/admin/doAddAccount", adminController.postRegisterAccount)
+
 
 module.exports = router;

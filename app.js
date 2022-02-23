@@ -6,7 +6,7 @@ const Account = require('./models/user');
 const customer = require('./models/customer');
 const book = require('./models/book');
 const bookCategory = require('./models/bookCategory');
-const shoppingcart = require('./models/orderDetail');
+const orderDetail = require('./models/orderDetail');
 session = require('express-session')
 const path = require("path");
 var hbs = require('hbs');
@@ -28,32 +28,23 @@ app.use(session({
     cookie: { maxAge: 3600000 }
 }));
 
-// const adminController = require('./controller/admin')
-// const shoppingcart = require('./controller/shoppingcart')
-//cac request co chua /admin se di den controller admin
-// app.use('/admin', adminController)
-// app.use('/shoppingcart', shoppingcart)
 
-app.get('/',(req,res)=>{
-    res.render('index')
+app.get('/',  async (req,res)=>{
+    var listBook = await book.find()
+    res.render('index', {listBook: listBook})
 })
 
-// app.get('/shoppingcart',(req,res)=>{
-//     res.render('shoppingcart')
-// })
+
 
 const authRoute = require("./routes/auth")
 app.use(authRoute)
 
-var customerRoute = require('./routes/customer.js')
+const customerRoute = require('./routes/customer.js')
 app.use('/', customerRoute)
 
-var adminRoute = require('./routes/admin.js')
+const adminRoute = require('./routes/admin.js')
 app.use('/', adminRoute)
 
-
-// app.use("/", adminRoute)
-// app.use("/", customerRoute)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT)
