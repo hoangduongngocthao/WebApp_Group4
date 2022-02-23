@@ -1,15 +1,15 @@
 const mongoose = require('../db/dbHandler')
 
-const shoppingcartSchema = new mongoose.Schema({
-    book: {
+const orderDetailSchema = new mongoose.Schema({
+    book: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'book'
-    },
+        ref: "book"
+    }],
 
-    customer: {
+    customer: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'customer'
-    }
+        ref: "customer"
+    }]
 })
 
-module.exports = mongoose.model('shoppingcart', shoppingcartSchema)
+module.exports = mongoose.model('orderDetail', orderDetailSchema)
