@@ -32,7 +32,9 @@ router.get("/customer/orderDetail", customerController.getOrderDetail)
 
 router.post("/customer/doAddToCart", customerController.postAddtocart)
 
+router.get('/customer/updateProfile', customerController.getProfile);
 
+router.post('/doUpdateProfileCustomer', customerController.updateProfile);
 
 
 module.exports = router;

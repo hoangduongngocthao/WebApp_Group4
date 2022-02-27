@@ -1,11 +1,7 @@
 const mongoose = require('../db/dbHandler')
 
 const orderDetailSchema = new mongoose.Schema({
-    book: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "book"
-    }],
-
+    books: [],
     customer: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "customer"

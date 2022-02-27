@@ -32,5 +32,27 @@ router.get("/admin/registerAccount", adminController.getRegisterAccount)
 
 router.post("/admin/doAddAccount", adminController.postRegisterAccount)
 
+router.get("/admin/adminViewCustomer", adminController.viewAllAccount)
+
+router.get("/admin/adminAddCustomer", adminController.addCustomer)
+
+router.post("/admin/doAddCustomer", adminController.doAddCustomer)
+
+router.get("/admin/adminEditCustomer", adminController.editCustomer)
+
+router.post("/admin/doEditCustomer", adminController.doEditCustomer)
+
+router.get("/admin/adminBookDetail", adminController.getBookDetail)
+
+router.get("/admin/adminAddBook", adminController.viewAddBook)
+
+router.post("/admin/doAddBook", adminController.addBook)
+
+router.get("/admin/adminEditBook", adminController.editBook)
+
+router.post("/admin/doEditBook", adminController.doEditBook)
+
+router.post("/admin/doDeleteBook", adminController.doDeleteBook)
+
 
 module.exports = router;
