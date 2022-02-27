@@ -9,7 +9,8 @@
   <!-- Fonts -->
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700' rel='stylesheet' type='text/css'>
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 
   <!-- Css -->
@@ -22,25 +23,35 @@
 
 </head>
 
-	{{> adminHeader}}
+{{> adminHeader}}
+
 <body>
 
-	<!-- MODAL Start
+  <!-- MODAL Start
     	================================================== -->
 
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-		    	<div class="modal-content">
-		    		<div class="modal-header">
-		      		</div>
-			      	<div class="modal-body clearfix">
-			      	</div>
-			      	<div class="modal-footer">
-			      	</div>
-		    	</div>
-		  	</div>
-		</div>	
-	</section>  <!-- End of /Section -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+        </div>
+        <div class="modal-body clearfix">
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  </section> <!-- End of /Section -->
+
+
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="block">
+    <ul class="nav navbar-nav nav-main">
+      <li><a href="admin/adminViewCustomer">Manager Account</a></li>
+    </ul> <!-- End of /.nav-main -->
+    </div>
+  </div>
 
   <!-- FEATURES Start
     ================================================== -->
@@ -102,23 +113,23 @@
         <div class="col-md-12">
           <div class="block">
             <div class="block-heading">
-              <h2>Product Best Seller</h2>
+              <h2>Manager Book</h2>
             </div>
 
             {{#each listBook}}
             <div class="row">
               <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
-                  <a class="catagotie-head" href="/customer/bookDetail?id={{id}}">
+                  <a class="catagotie-head" href="/admin/adminBookDetail?id={{id}}">
                     <img src="../{{img}}" alt="...">
                     <h3>{{name}}</h3>
                   </a>
                   <div class="caption">
-                    <p>{{description}}</p>     
+                    <p>{{description}}</p>
                   </div> <!-- End of /.caption -->
                 </div> <!-- End of /.thumbnail -->
               </div> <!-- End of /.col-sm-6 col-md-4 -->
-            {{/each}}
+              {{/each}}
 
             </div> <!-- End of /.row -->
           </div> <!-- End of /.block -->
@@ -127,81 +138,6 @@
     </div> <!-- End of /.container -->
   </section> <!-- End of Section -->
 
-
-
-
-  <!-- PRODUCTS Start
-    ================================================== -->
-
-  <section id="products">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="products-heading">
-            <h2>NEW PRODUCTS</h2>
-          </div>
-        </div>
-      </div>
-
-      {{#each listBook}}
-      <div class="row">
-        <div class="col-md-3">
-          <div class="products">
-            <a href="/customer/bookDetail?id={{id}}">
-              <img src="../{{img}}" alt="">
-            </a>
-            <a href="/bookDetail">
-              <h4> {{name}} </h4>
-            </a>
-            <p class="price">{{price}}VNĐ</p>
-            <a class="view-link shutter" href="/shoppingcart">
-              <i class="fa fa-plus-circle"></i>Add To Cart</a>
-          </div> <!-- End of /.products -->
-        </div> <!-- End of /.col-md-3 -->
-        {{/each}}
-
-        {{!-- <div class="col-md-3">
-          <div class="products">
-            <a href="/bookDetail">
-              <img src="images/shine4.jpg" alt="">
-            </a>
-            <a href="/bookDetail">
-              <h4> Shine cậu bé bút chì - tập 2</h4>
-            </a>
-            <p class="price">25.000VNĐ</p>
-            <a class="view-link shutter" href="#">
-              <i class="fa fa-plus-circle"></i>Add To Cart</a>
-          </div> <!-- End of /.products -->
-        </div> <!-- End Of Col-md-3 -->
-        <div class="col-md-3">
-          <div class="products">
-            <a href="/bookDetail">
-              <img src="images/shine1.jpg" alt="">
-            </a>
-            <a href="/bookDetail">
-              <h4>Shine cậu bé bút chì - tập 3</h4>
-            </a>
-            <p class="price">30.000VNĐ</p>
-            <a class="view-link shutter" href="#">
-              <i class="fa fa-plus-circle"></i>Add To Cart</a>
-          </div> <!-- End of /.products -->
-        </div> <!-- End Of /.Col-md-3 -->
-        <div class="col-md-3">
-          <div class="products">
-            <a href="/bookDetail">
-              <img src="images/shine2.jpg" alt="">
-            </a>
-            <a href="/bookDetail">
-              <h4>Shine cậu bé bút chì - tập 4</h4>
-            </a>
-            <p class="price">35.000VNĐ</p>
-            <a class="view-link shutter" href="#">
-              <i class="fa fa-plus-circle"></i>Add To Cart</a>
-          </div> <!-- End of /.products -->
-        </div> <!-- End Of /.Col-md-3 -->
-      </div> <!-- End of /.row -->
-    </div> <!-- End of /.container --> --}}
-  </section> <!-- End of Section -->
 
 
 
@@ -214,7 +150,8 @@
         <div class="col-md-4">
           <div class="block clearfix">
             <p>
-              Welcome to the Group 4, FptBook Shop bring very new of book. Every book anime of Shin and public by Group 4 with my team
+              Welcome to the Group 4, FptBook Shop bring very new of book. Every book anime of Shin and public by Group
+              4 with my team
             </p>
             <h4 class="connect-heading">CONNECT WITH US</h4>
             <ul class="social-icon">
@@ -273,10 +210,10 @@
               <a class="pull-left" href="#">
                 <img class="media-object" src="images/shine4.jpg" alt="...">
               </a>
-               <a class="pull-left" href="#">
+              <a class="pull-left" href="#">
                 <img class="media-object" src="images/shine5.jpg" alt="...">
               </a>
-               <a class="pull-left" href="#">
+              <a class="pull-left" href="#">
                 <img class="media-object" src="images/shine6.jpg" alt="...">
               </a>
             </div> <!-- End Of /.media -->
