@@ -19,7 +19,7 @@ const bookSchema = new mongoose.Schema({
     },
     img:{
         type: String,
-        default: "bookdefault.jpg"
+        default: "uploads/bookdefault.jpg"
     },
 });
 

@@ -52,7 +52,7 @@ router.get("/admin/adminEditBook", adminController.editBook)
 
 router.post("/admin/doEditBook", adminController.doEditBook)
 
-router.post("/admin/doDeleteBook", adminController.doDeleteBook)
+router.get("/admin/doDeleteBook", adminController.doDeleteBook)
 
 
 module.exports = router;
