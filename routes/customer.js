@@ -32,6 +32,8 @@ router.get("/customer/orderDetail", customerController.getOrderDetail)
 
 router.post("/customer/doAddToCart", customerController.postAddtocart)
 
+router.get("/customer/getRemoveFromCart", customerController.getRemoveFromCart)
+
 router.get('/customer/updateProfile', customerController.getProfile);
 
 router.post('/doUpdateProfileCustomer', customerController.updateProfile);

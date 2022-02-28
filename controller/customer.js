@@ -47,11 +47,12 @@ exports.getOrderDetail = async(req, res) => {
     var OderDetail = await orderDetail.findOne({_id: currentCustomer.orderDetail}).populate('books')
     
     var listBookOrderDetail = OderDetail.books
-    // for(var b of listBookOrderDetail ){
-
-    // }
-    
-    res.render('customer/orderDetail', { OderDetail: OderDetail , listBookOrderDetail: listBookOrderDetail})
+    var totalPrice =0
+    for(var b of listBookOrderDetail){
+        totalPrice += parseFloat(b.price)*parseInt(b.quantity)
+    }
+    console.log(totalPrice)
+    res.render('customer/orderDetail', { OderDetail: OderDetail , listBookOrderDetail: listBookOrderDetail,totalPrice:totalPrice})
 }
 
 exports.postAddtocart = async (req, res) => {
@@ -65,44 +66,54 @@ exports.postAddtocart = async (req, res) => {
     var quantityForAdd = req.body.quantity
     var quantityForAddInt = parseInt(req.body.quantity)
     let flag
-    for(var idBook of listBookOrderDetail){
-        if(id !=idBook._id){
-         flag = false
-        }
-         else {
-         flag =true       
-        
-         var quantityBookOrderDetail =parseInt(idBook.quantity)+quantityForAdd
-         console.log("Quantity :" +idBook.quantity)
-         console.log("ADd: "+ quantityForAdd)
-      
-         await orderDetail.findOneAndUpdate({_id:OderDetail._id,"books._id":idBook._id},
-            {$set:{books:{_id:id,name:bookDetail.name,price:bookDetail.price,
-                quantity:quantityBookOrderDetail,img:bookDetail.img,description:bookDetail.description}}},
-                { new: true, useFindAndModify: false }
-            )
-         break
-         }
-     }
+    if(quantityForAdd > quantityBefore){
+        // Thông báo lỗi không đủ số lượng
+        res.redirect('/customer/bookDetail?id='+id)
+    }
+    else {
+        for(var idBook of listBookOrderDetail){
+            if(id !=idBook._id){
+            flag = false
+            }
+            else {
+            flag =true                  
+            var quantityBookOrderDetail =parseInt(idBook.quantity)+parseInt(quantityForAdd)   
 
-     if(flag == false ||listBookOrderDetail.length<1)
-         { 
-             await orderDetail.findByIdAndUpdate(OderDetail._id,
-             {$push :{books:{_id:id,name:bookDetail.name,price:bookDetail.price,
-                 quantity:quantityForAddInt,img:bookDetail.img,description:bookDetail.description}}},
-                 { new: true, useFindAndModify: false }
-             )
-         }
- 
+            await orderDetail.findOneAndUpdate({_id:OderDetail._id,"books._id":idBook._id},
+                {$set:{"books.$.quantity":quantityBookOrderDetail}},
+                    { new: true, useFindAndModify: false }
+                )
+            break
+            }
+        }
+        if(flag == false ||listBookOrderDetail.length<1)
+            { 
+                await orderDetail.findByIdAndUpdate(OderDetail._id,
+                {$push :{books:{_id:id,name:bookDetail.name,price:bookDetail.price,
+                    quantity:quantityForAddInt,img:bookDetail.img,description:bookDetail.description}}},
+                    { new: true, useFindAndModify: false }
+                )
+            }  
+        let quantityAfter = quantityBefore - quantityForAdd 
+        await book.findByIdAndUpdate({_id: id}, {$set: {quantity: quantityAfter}})
+        res.redirect('/customer/orderDetail')
+        }
    
-    let quantityAfter = quantityBefore - quantityForAdd
-   
-    await book.findByIdAndUpdate({_id: id}, {$set: {quantity: quantityAfter}})
-   
-   
+    
+}
+exports.getRemoveFromCart = async(req,res)=>{
+    let id = req.query.id
+    console.log(id)
+    var currentCustomer = await customer.findOne({email: req.session.email}).populate('orderDetail')
+    var OderDetail = await orderDetail.findOne({_id: currentCustomer.orderDetail}).populate('books')
+    let bookDetail = await book.findById(id)
+
+    await orderDetail.findOneAndUpdate({_id:OderDetail._id},
+                {$pull:{books:{_id:id}}},
+                    { new: true }
+                )
     res.redirect('/customer/orderDetail')
 }
-
 //view profile
 exports.getProfile = async(req,res)=>{
     let aCustomer = await customer.findOne({email : req.session.email})

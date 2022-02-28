@@ -50,7 +50,10 @@ exports.postRegisterAccount = async(req, res) => {
     res.redirect('/admin')
 }
 
-//view all staff
+// ------------------------Customer--------------------------------
+// ----------------------------------------------------------------
+
+//view all Account
 exports.viewAllAccount = async (req, res) => {
     let listCustomer = await customer.find();
     res.render('admin/adminViewCustomer', { listCustomer: listCustomer, loginName: req.session.email })
@@ -107,6 +110,15 @@ exports.doEditCustomer = async (req, res) => {
     }
 }
 
+exports.doDeleteCustomer = async (req, res) => {
+    let id = req.query.id;
+    await customer.findByIdAndRemove(id);
+    res.redirect('/admin/adminViewCustomer');
+}
+
+// ------------------------Book--------------------------------
+// ----------------------------------------------------------------
+
 //Book Admin
 exports.getBookDetail = async(req, res) => {
     let id = req.query.id
@@ -141,16 +153,16 @@ exports.addBook = async (req, res) => {
     res.redirect('/admin');
 }
 
-// Click Edit Course
+// Click Edit Book
 exports.editBook = async (req, res) => {
     let id = req.query.id;
     console.log('ID: ' + id);
     let Books = await book.findById(id);
-    //console.log(course);
+    //console.log(book);
     res.render('admin/adminEditBook', { Books: Books, loginName: req.session.email })
 }
 
-// Do Edit Course 
+// Do Edit Book 
 exports.doEditBook = async (req, res) => {
     let id = req.body.id;
     let Books = await book.findById(id);
@@ -174,3 +186,5 @@ exports.doDeleteBook = async (req, res) => {
     await book.findByIdAndRemove(id).then(data = {});
     res.redirect('/admin');
 }
+
+

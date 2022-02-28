@@ -54,5 +54,6 @@ router.post("/admin/doEditBook", adminController.doEditBook)
 
 router.get("/admin/doDeleteBook", adminController.doDeleteBook)
 
+router.get("/admin/doDeleteCustomer", adminController.doDeleteCustomer)
 
 module.exports = router;
