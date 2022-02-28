@@ -24,19 +24,19 @@ const { isCustomer } = require("../middlerware/auth");
 //     },
 // })
 
-router.get("/customer", customerController.getCustomer)
+router.get("/customer", isCustomer, customerController.getCustomer)
 
-router.get("/customer/bookDetail", customerController.getBookDetail)
+router.get("/customer/bookDetail", isCustomer, customerController.getBookDetail)
 
-router.get("/customer/orderDetail", customerController.getOrderDetail)
+router.get("/customer/orderDetail", isCustomer, customerController.getOrderDetail)
 
-router.post("/customer/doAddToCart", customerController.postAddtocart)
+router.post("/customer/doAddToCart", isCustomer, customerController.postAddtocart)
 
-router.get("/customer/getRemoveFromCart", customerController.getRemoveFromCart)
+router.get("/customer/getRemoveFromCart", isCustomer, customerController.getRemoveFromCart)
 
-router.get('/customer/updateProfile', customerController.getProfile);
+router.get('/customer/updateProfile', isCustomer, customerController.getProfile);
 
-router.post('/doUpdateProfileCustomer', customerController.updateProfile);
+router.post('/doUpdateProfileCustomer', isCustomer, customerController.updateProfile);
 
 
 module.exports = router;

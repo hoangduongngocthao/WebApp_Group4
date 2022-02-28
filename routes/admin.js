@@ -26,34 +26,34 @@ const { isAdmin } = require("../middlerware/auth");
 
 // router.get("/admin/feedbackManage", isAdmin, adminController.feedbackManage)
 
-router.get("/admin", adminController.getAdmin)
+router.get("/admin", isAdmin, adminController.getAdmin)
 
-router.get("/admin/registerAccount", adminController.getRegisterAccount)
+router.get("/admin/registerAccount", isAdmin, adminController.getRegisterAccount)
 
-router.post("/admin/doAddAccount", adminController.postRegisterAccount)
+router.post("/admin/doAddAccount", isAdmin, adminController.postRegisterAccount)
 
-router.get("/admin/adminViewCustomer", adminController.viewAllAccount)
+router.get("/admin/adminViewCustomer", isAdmin, adminController.viewAllAccount)
 
-router.get("/admin/adminAddCustomer", adminController.addCustomer)
+router.get("/admin/adminAddCustomer", isAdmin, adminController.addCustomer)
 
-router.post("/admin/doAddCustomer", adminController.doAddCustomer)
+router.post("/admin/doAddCustomer", isAdmin, adminController.doAddCustomer)
 
-router.get("/admin/adminEditCustomer", adminController.editCustomer)
+router.get("/admin/adminEditCustomer", isAdmin, adminController.editCustomer)
 
-router.post("/admin/doEditCustomer", adminController.doEditCustomer)
+router.post("/admin/doEditCustomer", isAdmin, adminController.doEditCustomer)
 
-router.get("/admin/adminBookDetail", adminController.getBookDetail)
+router.get("/admin/adminBookDetail", isAdmin, adminController.getBookDetail)
 
-router.get("/admin/adminAddBook", adminController.viewAddBook)
+router.get("/admin/adminAddBook", isAdmin, adminController.viewAddBook)
 
-router.post("/admin/doAddBook", adminController.addBook)
+router.post("/admin/doAddBook", isAdmin, adminController.addBook)
 
-router.get("/admin/adminEditBook", adminController.editBook)
+router.get("/admin/adminEditBook", isAdmin, adminController.editBook)
 
-router.post("/admin/doEditBook", adminController.doEditBook)
+router.post("/admin/doEditBook", isAdmin, adminController.doEditBook)
 
-router.get("/admin/doDeleteBook", adminController.doDeleteBook)
+router.get("/admin/doDeleteBook", isAdmin, adminController.doDeleteBook)
 
-router.get("/admin/doDeleteCustomer", adminController.doDeleteCustomer)
+router.get("/admin/doDeleteCustomer", isAdmin, adminController.doDeleteCustomer)
 
 module.exports = router;
