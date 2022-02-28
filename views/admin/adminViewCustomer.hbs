@@ -21,6 +21,10 @@
                             placeholder="Search by name (or day of birth)" aria-label="Search" aria-describedby="search-addon" />
                         <button type="submit" class="btn btn-success">Search</button>
                     </form>
+                     <a href="/admin" class="btn btn-info" style="margin-left: 5%;">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span><strong>Back Home</strong></span>
+                    </a>
                 </div>
             </div>
         </center>
@@ -34,7 +38,7 @@
                             <thead>
                                 <tr>
                                     <th class="max-width" style="text-align:center" >Name</th>
-                                    <th class="max-width" style="text-align:center; width: 150px">Image</th>
+                                    {{!-- <th class="max-width" style="text-align:center; width: 150px">Image</th> --}}
                                     <th class="max-width" style="text-align:center">Email</th>
                                     <th style="text-align:center">Education</th>
                                     <th style="text-align:center">Actions</th>
@@ -44,11 +48,11 @@
                                 {{#each listCustomer}}
                                 <tr>
                                     <td class="text-nowrap align-middle">{{name}}</td>
-                                    <td class="text-nowrap align-middle">
+                                    {{!-- <td class="text-nowrap align-middle">
                                         <center>
                                             <img src="../{{img}}" alt="{{name}}" width="50px" height="70px">
                                         </center>
-                                    </td>
+                                    </td> --}}
                                     <td class="text-nowrap align-middle">{{email}}</td>
                                     <td class="text-nowrap align-middle"><span>{{education}}</span></td>
                                     <td class="text-center align-middle">
@@ -57,8 +61,8 @@
                                                 <span class="glyphicon glyphicon-edit"></span>
                                                 <span><strong>Edit</strong></span>
                                             </a>
-                                            <a href="/admin/trainee/delete?id={{id}}"
-                                                onclick="return confirm('Are you sure')" class="btn btn-danger">
+                                            <a href="/admin/doDeleteCustomer?id={{id}}"
+                                                onclick="return confirm('Are you sure?')" class="btn btn-danger">
                                                 <span class="glyphicon glyphicon-remove"></span>
                                                 <span><strong>Delete</strong></span>
                                             </a>
