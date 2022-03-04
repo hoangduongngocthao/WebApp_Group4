@@ -15,11 +15,11 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col"> </th>
+                                    <th scope="col" class= "text-right"> Image </th>
                                     <th scope="col">Product</th>
                                     <th scope="col" class="text-center">Quantity</th>
                                     <th scope="col" class="text-right">Price</th>
-                                    <th> </th>
+                                    <th scope="col" class="text-right"> Actions </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -28,7 +28,7 @@
                                 <tr>
                                     <td><img src="../{{img}}" /> </td>
                                     <td>{{name}}</td>
-                                    <td>{{quantity}}</td>
+                                    <td class="text-center">{{quantity}}</td>
                                     <td class="text-right">{{price}}</td>
                                     <td class="text-right"><a class="btn btn-danger"href="/customer/getRemoveFromCart?id={{_id}}"><i class="fa fa-trash"></i></a>  </td>
                                 </tr>
@@ -39,7 +39,7 @@
                                     <td></td>
                                     <td></td>
                                     <td><strong>Total</strong></td>
-                                    <td class="text-right"><strong>{{totalPrice}} €</strong></td>
+                                    <td class="text-right"><strong>{{totalPrice}} VNĐ</strong></td>
                                 </tr>
                             </tbody>
                         </table>

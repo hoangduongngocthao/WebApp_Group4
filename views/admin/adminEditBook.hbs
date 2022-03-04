@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="col-md-8 border-right">
-                    <form class="form" method="POST" action="/admin/doEditBook">
+                    <form class="form" method="POST" action="/admin/doEditBook" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col">
                                 <input type="hidden" name="id" value="{{Books.id}}">
@@ -49,6 +49,14 @@
                                     <input class="form-control" name="description" value="{{Books.description}}"
                                         required />
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col mb-3">
+                                <div class="col form-group">
+                                <label>Image</label>                                
+                                <input type="file" name="image" id="picture" />
                             </div>
                         </div>
 

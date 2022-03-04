@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="col-md-8 border-right">
-                    <form class="form" method="post" action="/admin/doAddBook">
+                    <form class="form" method="post" action="/admin/doAddBook" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
@@ -52,14 +52,14 @@
                             <div class="col mb-3">
                                 <div class="col form-group">
                                     <label>Image</label>
-                                    <input type="file" name="picture" id="picture" accept="image/*" />
+                                    <input type="file" name="picture" id="picture" />
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col d-flex justify-content-end">
                                 <button class="btn btn-primary" type="submit">Save</button>
-                                <a href="admin/adminBookDetail" class="btn btn-warning">Cancel</a>
+                                <a href="/admin/adminBookDetail" class="btn btn-warning">Cancel</a>
                             </div>
                         </div>
                     </form>
