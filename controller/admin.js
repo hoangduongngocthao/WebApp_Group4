@@ -12,10 +12,6 @@ exports.getRegisterAccount = async (req, res) => {
     res.render('admin/registerAccount', { loginName: req.session.email })
 }
 
-// exports.feedbackManage = async (req, res) => {
-//     res.render ('adminPage', {feedback: result,  loginName: req.session.email })
-//     const result = await dbHandler.getAll("Feedback");
-// }
 
 exports.postRegisterAccount = async(req, res) => {
     const nameInput = req.body.username;
@@ -63,14 +59,14 @@ exports.addCustomer = async (req, res) => {
     res.render('admin/adminAddCustomer', { loginName: req.session.email });
 }
 
-exports.doAddCustomer = async (req, res) => {
+exports.postDoAddCustomer = async (req, res) => {
     let newCustomer;
     if (req.file) {
         newCustomer = new customer({
             name: req.body.name,
             email: req.body.email,
             education: req.body.education,
-            img: req.file.filename
+            img: req.file.path
         });
         newCustomer = await newCustomer.save()
     } else {
@@ -92,16 +88,15 @@ exports.editCustomer = async (req, res) => {
     res.render('admin/adminEditCustomer', { listCustomer: customerEdit, loginName: req.session.email })
 }
 
-exports.doEditCustomer = async (req, res) => {
+exports.postDoEditCustomer = async (req, res) => {
     let id = req.body.id;
-    let listCustomer = await customer.findById(id);
-    // if (req.file) {
-    //     listCustomer.img = req.file.filename;
-    // }
-    listCustomer.name = req.body.name;
-    listCustomer.education = req.body.education;
+    let detailCustomer = await customer.findById(id);
+
+    detailCustomer.name = req.body.name;
+    detailCustomer.education = req.body.education;
+    detailCustomer.img = req.file.path;
     try {
-        listCustomer = await listCustomer.save();
+        detailCustomer = await detailCustomer.save();
         res.redirect('adminViewCustomer');
     }
     catch (error) {
@@ -115,6 +110,17 @@ exports.doDeleteCustomer = async (req, res) => {
     await customer.findByIdAndRemove(id);
     res.redirect('/admin/adminViewCustomer');
 }
+
+// Search Customer
+exports.doSearchCustomer = async (req, res) => {
+    const searchText = req.body.keyword;
+    console.log(searchText);
+    const searchCondition = new RegExp(searchText, 'i');
+    let listCustomer = await customer.find({ name: searchCondition });
+    console.log(listCustomer);
+    res.render('admin/adminViewCustomer', { listCustomer: listCustomer, loginName: req.session.email });
+}
+
 
 // ------------------------Book--------------------------------
 // ----------------------------------------------------------------
@@ -138,11 +144,14 @@ exports.addBook = async (req, res) => {
     let description = req.body.description;
     let price = req.body.price;
     let quantity = req.body.quantity;
+    let img = req.file.path;
+
     let newBook = await book({
         name: name, 
         description: description, 
         price: price, 
-        quantity: quantity
+        quantity: quantity,
+        img: img
     })
     try {
         newBook = await newBook.save();
@@ -170,6 +179,7 @@ exports.doEditBook = async (req, res) => {
     Books.description = req.body.description;
     Books.price = req.body.price;
     Books.quantity = req.body.quantity;
+    Books.img = req.file.path
     try {
         Books = await Books.save();
         res.redirect('/admin');
@@ -188,3 +198,12 @@ exports.doDeleteBook = async (req, res) => {
 }
 
 
+// Search Book
+exports.doSearchBook = async (req, res) => {
+    const searchText = req.body.keyword;
+    console.log(searchText);
+    const searchCondition = new RegExp(searchText, 'i');
+    let listBook = await book.find({ name: searchCondition });
+    console.log(listBook);
+    res.render('admin/adminPage', { listBook: listBook, loginName: req.session.email });
+}

@@ -117,17 +117,20 @@ exports.getRemoveFromCart = async(req,res)=>{
 //view profile
 exports.getProfile = async(req,res)=>{
     let aCustomer = await customer.findOne({email : req.session.email})
+    console.log(aCustomer)
     res.render('customer/customerUpdateProfile',{ aCustomer: aCustomer, loginName : req.session.email});
 }
 
 //update profile
 exports.updateProfile = async(req,res)=>{
     let id = req.body.id;
-    let aCustomer = await aCustomer.findById(id);
+    let aCustomer = await customer.findById(id);
     // if (req.file) {
     //     aTrainee.img = req.file.filename;
     // }
+    aCustomer.name = req.body.name;
     aCustomer.education = req.body.education;
     aCustomer = await aCustomer.save();
     res.redirect('/customer');
 }
+

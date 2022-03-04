@@ -36,7 +36,7 @@ router.get("/customer/getRemoveFromCart", isCustomer, customerController.getRemo
 
 router.get('/customer/updateProfile', isCustomer, customerController.getProfile);
 
-router.post('/doUpdateProfileCustomer', isCustomer, customerController.updateProfile);
+router.post('/customer/doUpdateProfileCustomer', isCustomer, customerController.updateProfile);
 
 
 module.exports = router;
