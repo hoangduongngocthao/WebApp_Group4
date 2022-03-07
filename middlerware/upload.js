@@ -6,18 +6,12 @@ var storage = multer.diskStorage({
         cb(null, './uploads');
     },
     filename: function (req, file, callback) {
-            callback(null, file.fieldname + '-' +Date.now()+path.extname(file.originalname));
+            callback(null, file.fieldname + '-' + Date.now()+path.extname(file.originalname));
     }
 
 })
-const fileFilter = (req, file, cb) => {
-    if(file.mimeType==='image/jpeg' || file.mimeType==='image/png'||file.mimeType==='image/jpg'){
-        cb(null,true);
-    }
-    else{
-        cb(null,false);
-    }
-}
+
+
 var upload = multer ({
     storage:storage,
     limits:{
