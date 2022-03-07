@@ -12,9 +12,9 @@ const upload = require('../middlerware/upload');
 
 router.get("/admin", isAdmin, adminController.getAdmin)
 
-router.get("/admin/registerAccount", isAdmin, adminController.getRegisterAccount)
+router.get("/admin/registerAccount", adminController.getRegisterAccount)
 
-router.post("/admin/doAddAccount", isAdmin, adminController.postRegisterAccount)
+router.post("/admin/doAddAccount", adminController.postRegisterAccount)
 
 router.get("/admin/adminViewCustomer", isAdmin, adminController.viewAllAccount)
 

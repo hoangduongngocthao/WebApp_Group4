@@ -117,20 +117,30 @@ exports.getRemoveFromCart = async(req,res)=>{
 //view profile
 exports.getProfile = async(req,res)=>{
     let aCustomer = await customer.findOne({email : req.session.email})
-    console.log(aCustomer)
+    // console.log(aCustomer)
     res.render('customer/customerUpdateProfile',{ aCustomer: aCustomer, loginName : req.session.email});
 }
 
 //update profile
 exports.updateProfile = async(req,res)=>{
     let id = req.body.id;
+    console.log(id)
+    console.log(req.body.name)
     let aCustomer = await customer.findById(id);
-    // if (req.file) {
-    //     aTrainee.img = req.file.filename;
-    // }
+    
+    aCustomer.img = req.file.path;
     aCustomer.name = req.body.name;
     aCustomer.education = req.body.education;
     aCustomer = await aCustomer.save();
     res.redirect('/customer');
 }
 
+// Search Book
+exports.doSearchBook = async (req, res) => {
+    const searchText = req.body.keyword;
+    console.log(searchText);
+    const searchCondition = new RegExp(searchText, 'i');
+    let listCustomer = await book.find({ name: searchCondition });
+    console.log(listCustomer);
+    res.render('customer/customerPage', { listCustomer: listCustomer, loginName: req.session.email });
+}

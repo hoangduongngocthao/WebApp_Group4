@@ -21,36 +21,14 @@ exports.handleLogin = async (req, res) => {
                     req.session.admin = true;
                     res.redirect('/admin');
                 }
+        } 
+        else {
+            return res.render('login', { errors: 'Username or password is incorrect' })
         }
-        // console.log(user)
-        // console.log(password)
-        // Account.compare(password, user.password).then((doMatch) => {
-        //     console.log('aaaaaaa')
-        //     if (doMatch) {
-        //         if (user.Role == 'customer') {
-        //             console.log('aaaa')
-        //             req.session.user = user;
-        //             req.session.email = username;
-        //             req.session.customer = true;
-        //             res.redirect('/customer');
-        //         }
-        //         else if (user.Role == 'admin') {
-        //             req.session.user = user;
-        //             req.session.email = username;
-        //             req.session.admin = true;
-        //             res.redirect('/admin');
-        //         }
-        //     } else {
-        //         return res.render('login', { errors: 'Username or password is incorrect' })
-        //     }
 
-        // })
-            // .catch(err => {
-            //     console.log(err)
-            // })
+
     } catch (error) {
         console.log(error);
-        //return res.render('index');
     }
 };
 

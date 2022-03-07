@@ -12,33 +12,30 @@ exports.getRegisterAccount = async (req, res) => {
     res.render('admin/registerAccount', { loginName: req.session.email })
 }
 
-
 exports.postRegisterAccount = async(req, res) => {
-    const nameInput = req.body.username;
-    const emailInput = req.body.email;
-    const passwordInput = req.body.password;
-    const educationInput = req.body.education;
-    let account = await user.findOne({email: emailInput})
-    console.log(nameInput)
-    console.log(emailInput)
-    console.log(passwordInput)
-    console.log(educationInput)
-
+    const name = req.body.name;
+    const email = req.body.email;
+    const password = req.body.password;
+    const education = req.body.education;
+    let account = await user.findOne({email: email})
+    console.log(name)
+    console.log(email)
+    console.log(password)
+    console.log(education)
     console.log('aaaa' + account + '\n');   
     let newCustomer = new customer ({
-        name: nameInput,
-        email: emailInput,
-        password: passwordInput,
-        education: educationInput
-        
+        name: name,
+        email: email,
+        password: password,
+        education: education
     });
     console.log(newCustomer);
     if(account == null) {
     newCustomer = await newCustomer.save();
     
         let newUser = new user({
-            email:emailInput,
-            password:passwordInput,
+            email:email,
+            password:password,
             Role: "customer"
         })
         newUser = await newUser.save();
@@ -60,6 +57,11 @@ exports.addCustomer = async (req, res) => {
 }
 
 exports.postDoAddCustomer = async (req, res) => {
+    // let newAccount = new Account({
+    //     email: req.body.email,
+    //     password: "12345",
+    //     Role: "customer"
+    // });
     let newCustomer;
     if (req.file) {
         newCustomer = new customer({
@@ -69,6 +71,7 @@ exports.postDoAddCustomer = async (req, res) => {
             img: req.file.path
         });
         newCustomer = await newCustomer.save()
+        // newAccount = newAccount.save();
     } else {
         newCustomer = new customer({
             name: req.body.name,
@@ -76,6 +79,7 @@ exports.postDoAddCustomer = async (req, res) => {
             education: req.body.education
         });
         newCustomer = await newCustomer.save()
+        // newAccount = newAccount.save();
     }
     res.redirect('adminViewCustomer');
 }
