@@ -140,7 +140,7 @@ exports.doSearchBook = async (req, res) => {
     const searchText = req.body.keyword;
     console.log(searchText);
     const searchCondition = new RegExp(searchText, 'i');
-    let listCustomer = await book.find({ name: searchCondition });
-    console.log(listCustomer);
-    res.render('customer/customerPage', { listCustomer: listCustomer, loginName: req.session.email });
+    let listBook = await book.find({ name: searchCondition });
+    console.log(listBook);
+    res.render('customer/customerPage', { listBook: listBook, loginName: req.session.email });
 }

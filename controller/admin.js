@@ -40,7 +40,7 @@ exports.postRegisterAccount = async(req, res) => {
         })
         newUser = await newUser.save();
     }
-    res.redirect('/admin')
+    res.redirect('/customer')
 }
 
 // ------------------------Customer--------------------------------
@@ -57,31 +57,34 @@ exports.addCustomer = async (req, res) => {
 }
 
 exports.postDoAddCustomer = async (req, res) => {
-    // let newAccount = new Account({
-    //     email: req.body.email,
-    //     password: "12345",
-    //     Role: "customer"
-    // });
-    let newCustomer;
-    if (req.file) {
-        newCustomer = new customer({
-            name: req.body.name,
-            email: req.body.email,
-            education: req.body.education,
-            img: req.file.path
-        });
-        newCustomer = await newCustomer.save()
-        // newAccount = newAccount.save();
-    } else {
-        newCustomer = new customer({
-            name: req.body.name,
-            email: req.body.email,
-            education: req.body.education
-        });
-        newCustomer = await newCustomer.save()
-        // newAccount = newAccount.save();
+    const name = req.body.name;
+    const email = req.body.email;
+    const password = req.body.password;
+    const education = req.body.education;
+    let account = await user.findOne({email: email})
+    console.log(name)
+    console.log(email)
+    console.log(password)
+    console.log(education)
+    console.log('aaaa' + account + '\n');   
+    let newCustomer = new customer ({
+        name: name,
+        email: email,
+        password: password,
+        education: education
+    });
+    console.log(newCustomer);
+    if(account == null) {
+    newCustomer = await newCustomer.save();
+    
+        let newUser = new user({
+            email:email,
+            password:password,
+            Role: "customer"
+        })
+        newUser = await newUser.save();
     }
-    res.redirect('adminViewCustomer');
+    res.redirect('adminViewCustomer')
 }
 
 exports.editCustomer = async (req, res) => {
@@ -149,6 +152,7 @@ exports.addBook = async (req, res) => {
     let price = req.body.price;
     let quantity = req.body.quantity;
     let img = req.file.path;
+    console.log(req.file)
 
     let newBook = await book({
         name: name, 
